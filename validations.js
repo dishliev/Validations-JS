@@ -1,5 +1,5 @@
 ﻿var Regex = {
-    Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     IsLetterAndNumber: /^[0-9a-zA-Z]+$/,
     IsLetter: /^[A-Za-z]+$/,
     IsNumber: /^\d+$/,
@@ -36,13 +36,37 @@ var Validate = {
                 var f = format.split();
                 var separator = null;
 
-                if (!/[ddDmMyY]/.test(f[2])) {
+                if (!/[dDmMyY]/.test(f[2])) {
                     separator = f[2];
                 }
-                else if (!/[ddDmMyY]/.test(f[4]) && /[ddDmMyY]/.test(f[2])) {
+                else if (!/[dDmMyY]/.test(f[4]) && /[dDmMyY]/.test(f[2])) {
                     separator = f[4];
                 }
+
+                var re = [/dD/, /mM/, /yY/];
+                
+                var d = re[0].test(f[0]);
+                var m = re[1].test(f[3]);
+                var y = re[2].test([6]);
+                var a = re[2].test([0]);
+
+                if (d && m && y) {
+                    //ddmmyyyy
+                }
+                else if (!d && !m && y) {
+                    //mmddyyyy
+                }
+                else if (!d && !m && !y && a) {
+                    //yyyyddmm
+                }
+                else if (!d && m && !y) {
+                    //yyyymmdd
+                }
+                else if (d && !m && !y) {
+                    //ddyyyymm
+                }
             }
+            
         }
         if (this.format.length != 0) {
             this.format.call;
