@@ -27,6 +27,29 @@ var Validate = {
         return Regex.ContainNumber(val);
     },
     IsDate: function (date) {
-        return Regex.IsDate(date);
-    }
+        var year = function () {
+
+        };
+
+        this.format = function (format) {
+            if (format.length == 8) {
+                var f = format.split();
+                var separator = null;
+
+                if (!/\d/.test(f[2])) {
+                    separator = f[2];
+                }
+                else if (!/\d/.test(f[4]) && !/\d/.test(f[4])) {
+                    separator = f[4];
+                }
+            }
+        }
+        if (this.format.length != 0) {
+            this.format.call;
+        }
+        //return this;
+    },
+
 };
+
+
