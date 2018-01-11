@@ -36,10 +36,10 @@ var Validate = {
                 var f = format.split();
                 var separator = null;
 
-                if (!/\d/.test(f[2])) {
+                if (!/[ddDmMyY]/.test(f[2])) {
                     separator = f[2];
                 }
-                else if (!/\d/.test(f[4]) && !/\d/.test(f[4])) {
+                else if (!/[ddDmMyY]/.test(f[4]) && /[ddDmMyY]/.test(f[2])) {
                     separator = f[4];
                 }
             }
@@ -47,7 +47,7 @@ var Validate = {
         if (this.format.length != 0) {
             this.format.call;
         }
-        //return this;
+        return this;
     },
 
 };
