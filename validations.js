@@ -4,7 +4,8 @@
     IsLetter: /^[A-Za-z]+$/,
     IsNumber: /^\d+$/,
     ContainNumber: /[0123456789]/,
-    IsDate: /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/ // MM/DD/YYYY and M/D/YYYY
+    IsDate: /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/, // MM/DD/YYYY and M/D/YYYY
+    Url: /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
 };
 
 var Validate = {
@@ -28,7 +29,11 @@ var Validate = {
     },
     IsDate: function (date) {
         return Regex.IsDate.test(date);
+    },
+    Url: function (url) {
+        return Regex.Url.test(url);
     }
+
 };
 
 
