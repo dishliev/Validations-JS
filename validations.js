@@ -7,7 +7,8 @@
     Date: /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/, // MM/DD/YYYY and M/D/YYYY
     Url: /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
     IP: /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$/i,
-    Base64: /[^a-zA-Z0-9\/\+=]/i
+    Base64: /[^a-zA-Z0-9\/\+=]/i,
+    Integer: /^\-?[0-9]+$/
 };
 
 var Validate = {
@@ -40,6 +41,9 @@ var Validate = {
     },
     Base64: function (ip) {
         return Regex.Base64.test(ip);
+    },
+    Integer: function (int) {
+        return Regex.Integer.test(int);
     }
 
 };
