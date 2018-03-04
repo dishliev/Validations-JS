@@ -49,5 +49,10 @@ var Validate = {
        isChecked: function (checkBox) {
             return checkBox.checked ? true : false;
         }
+    },
+    Radio: {
+        isChecked: function (radio) {
+            return radio.checked ? true : false;
+        }
     }
 };
