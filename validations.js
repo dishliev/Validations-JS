@@ -44,8 +44,10 @@ var Validate = {
     },
     Integer: function (int) {
         return Regex.Integer.test(int);
+    },
+    CheckBox: {
+       isChecked: function (checkBox) {
+            return checkBox.checked ? true : false;
+        }
     }
-
 };
-
-
