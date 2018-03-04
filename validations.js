@@ -8,7 +8,10 @@
     Url: /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
     IP: /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$/i,
     Base64: /[^a-zA-Z0-9\/\+=]/i,
-    Integer: /^\-?[0-9]+$/
+    Integer: /^\-?[0-9]+$/,
+    lowerCaseLetters: /[a-z]/g,
+    upperCaseLetters: /[A-Z]/g,
+    numbers: /[0-9]/g
 };
 
 var Validate = {
@@ -36,7 +39,7 @@ var Validate = {
     Url: function (url) {
         return Regex.Url.test(url);
     },
-    IP: function(ip){
+    IP: function (ip) {
         return Regex.IP.test(ip);
     },
     Base64: function (base64) {
@@ -46,7 +49,7 @@ var Validate = {
         return Regex.Integer.test(int);
     },
     CheckBox: {
-       isChecked: function (checkBox) {
+        isChecked: function (checkBox) {
             return checkBox.checked ? true : false;
         }
     },
@@ -54,5 +57,53 @@ var Validate = {
         isChecked: function (radio) {
             return radio.checked ? true : false;
         }
+    },
+    Password: function (input, conditions) {
+        var valid = 0;
+        if (conditions != "") {
+            // Validate numbers
+            if (conditions.numbers == true) {
+                if (input.value.match(Regex.numbers)) {
+                   
+                } else {
+                    valid += 1;
+                }
+            }
+            // Validate minLength
+            if (conditions.hasOwnProperty('minLength')) {
+                if (input.value.length >= conditions.minLength) {
+             
+                } else {
+                    valid += 1;
+                }
+            }
+            // Validate maxLength
+            if (conditions.hasOwnProperty('maxLength')) {
+                if (input.value.length <= conditions.maxLength) {
+                   
+                } else {
+                    valid += 1;
+                }
+            }
+            // Validate lowercase letters    
+            if (conditions.lowerCaseLetters == true) {   
+                if (input.value.match(Regex.lowerCaseLetters)) {
+                   
+                } else {
+                    valid += 1;
+                }
+            }
+            // Validate capital letters
+            if (conditions.upperCaseLetters == true) {
+                if (input.value.match(Regex.upperCaseLetters)) {
+                    
+                } else {
+                    valid += 1;
+                }
+            }
+        }
+        return valid != 0 ? false: true;
     }
-};
+}
+
+

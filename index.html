@@ -4,27 +4,25 @@
     <title>Validations</title>
     <script src="validations.js"></script>
     <script>
-        function validateEmail() {
-            var email = document.getElementById("email").value;
-            if (Validate.Email(email)) {
-                alert("Email is valid");
-            }
-            else {
-                alert("Email is not valid");
-            }
+        function validatePassword() {
+            var conditions = {
+                "minLength": 4,
+                "maxLength": 8,
+                "numbers": true,
+                "lowerCaseLetters": true,
+                "upperCaseLetters": true
+            }     
+            if (Validate.Password(document.getElementById('passwordField'), conditions))
+                alert('Y');
+            else
+                alert('N');
         }
 
-        function ch() {
-            Validate.IsDate("ddd").format("11.11.1111");
-           
-        }
     </script>
     <meta charset="utf-8" />
 </head>
 <body>
-    <input id="email" placeholder="email" type="text" />
-    <input type="button" value="Submit" onclick="validateEmail();" />
-
-    <input type="button" value="Submit1" onclick="ch();" />
+    <input type="password" id="passwordField"/>
+    <input type="button" value="ValidaPassword" onclick="validatePassword();" />
 </body>
 </html>
