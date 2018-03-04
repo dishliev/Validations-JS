@@ -39,8 +39,8 @@ var Validate = {
     IP: function(ip){
         return Regex.IP.test(ip);
     },
-    Base64: function (ip) {
-        return Regex.Base64.test(ip);
+    Base64: function (base64) {
+        return Regex.Base64.test(base64);
     },
     Integer: function (int) {
         return Regex.Integer.test(int);
