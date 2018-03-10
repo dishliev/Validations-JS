@@ -76,40 +76,46 @@ var Validate = {
             if (conditions.numbers == true) {
                 if (!input.value.match(Regex.numbers)) {
                     valid += 1;
-                    error = "numbers";
+                    error += "numbers";
                 }
             }
+
             // Validate minLength
             if (conditions.hasOwnProperty('minLength')) {
-                if (!input.value.length >= conditions.minLength) {
+                if (!(input.value.length >= conditions.minLength.length)) {
                     valid += 1;
-                    error = "minLength";
+                    error += conditions.minLength.errMsg;
                 }
             }
+
             // Validate maxLength
             if (conditions.hasOwnProperty('maxLength')) {
-                if (!input.value.length <= conditions.maxLength) {
+                if (!(input.value.length <= conditions.maxLength.length)) {
                     valid += 1;
-                    error = "maxLength";
+                    error += conditions.maxLength.errMsg;
                 }
             }
+
             // Validate lowercase letters    
             if (conditions.lowerCaseLetters == true) {
                 if (!input.value.match(Regex.lowerCaseLetters)) {
                     valid += 1;
-                    error = "lowerCaseLetters";
+                    error += "lowerCaseLetters";
                 }
             }
+
             // Validate capital letters
             if (conditions.upperCaseLetters == true) {
                 if (!input.value.match(Regex.upperCaseLetters)) {
                     valid += 1;
-                    error = "upperCaseLetters";
+                    error += "upperCaseLetters";
                 }
             }
         }
+
         isValid = valid != 0 ? false : true;
-        return "{'isValid': " + isValid + "'error':" + error + "}";
+
+        return JSON.parse("{\"isValid\": " + isValid + ",\"errMsg\":\"" + error + "\"}");
     }
 }
 

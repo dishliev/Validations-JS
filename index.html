@@ -6,16 +6,19 @@
     <script>
         function validatePassword() {
             var conditions = {
-                "minLength": 4,
+                "minLength": {
+                    "length": 4,
+                    "errMsg": "Min Length!"
+                },
                 "maxLength": 8,
                 "numbers": true,
                 "lowerCaseLetters": true,
                 "upperCaseLetters": true
             }
-            if (Validate.Password(document.getElementById('passwordField'), conditions).isValid)
-                alert('Y');
-            else
-                alert('N');
+            var validatePassword = Validate.Password(document.getElementById('passwordField'), conditions);
+
+            if (!validatePassword.isValid)
+                alert(validatePassword.errMsg);
         }
 
     </script>
