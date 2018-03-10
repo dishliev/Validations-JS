@@ -6,12 +6,14 @@
     <script>
         function validatePassword() {
             var conditions = {
-                "minLength": 4,
+                "minLength": {
+                    length: 4,
+                },
                 "maxLength": 8,
                 "numbers": true,
                 "lowerCaseLetters": true,
                 "upperCaseLetters": true
-            }     
+            }
             if (Validate.Password(document.getElementById('passwordField'), conditions))
                 alert('Y');
             else
@@ -22,7 +24,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <input type="password" id="passwordField"/>
+    <input type="password" id="passwordField" />
     <input type="button" value="ValidaPassword" onclick="validatePassword();" />
 </body>
 </html>

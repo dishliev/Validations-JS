@@ -63,43 +63,28 @@ var Validate = {
         if (conditions != "") {
             // Validate numbers
             if (conditions.numbers == true) {
-                if (input.value.match(Regex.numbers)) {
-                   
-                } else {
+                if (!input.value.match(Regex.numbers))
                     valid += 1;
-                }
             }
             // Validate minLength
             if (conditions.hasOwnProperty('minLength')) {
-                if (input.value.length >= conditions.minLength) {
-             
-                } else {
+                if (!input.value.length >= conditions.minLength) 
                     valid += 1;
-                }
             }
             // Validate maxLength
             if (conditions.hasOwnProperty('maxLength')) {
-                if (input.value.length <= conditions.maxLength) {
-                   
-                } else {
+                if (!input.value.length <= conditions.maxLength) 
                     valid += 1;
-                }
             }
             // Validate lowercase letters    
             if (conditions.lowerCaseLetters == true) {   
-                if (input.value.match(Regex.lowerCaseLetters)) {
-                   
-                } else {
+                if (!input.value.match(Regex.lowerCaseLetters)) 
                     valid += 1;
-                }
             }
             // Validate capital letters
             if (conditions.upperCaseLetters == true) {
-                if (input.value.match(Regex.upperCaseLetters)) {
-                    
-                } else {
+                if (!input.value.match(Regex.upperCaseLetters)) 
                     valid += 1;
-                }
             }
         }
         return valid != 0 ? false: true;
