@@ -68,7 +68,6 @@ var Validate = {
     },
     Password: function (input, conditions) {
         var valid = 0;
-        var isValid = "";
         var error = "";
 
         if (conditions != "") {
@@ -113,9 +112,7 @@ var Validate = {
             }
         }
 
-        isValid = valid != 0 ? false : true;
-
-        return JSON.parse("{\"isValid\": " + isValid + ",\"errMsg\":\"" + error + "\"}");
+        return JSON.parse("{\"isValid\": " + valid != 0 ? false : true + ",\"errMsg\":\"" + error + "\"}");
     }
 }
 
