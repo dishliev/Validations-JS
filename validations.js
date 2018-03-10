@@ -68,34 +68,48 @@ var Validate = {
     },
     Password: function (input, conditions) {
         var valid = 0;
+        var isValid = "";
+        var error = "";
+
         if (conditions != "") {
             // Validate numbers
             if (conditions.numbers == true) {
-                if (!input.value.match(Regex.numbers))
+                if (!input.value.match(Regex.numbers)) {
                     valid += 1;
+                    error = "numbers";
+                }
             }
             // Validate minLength
             if (conditions.hasOwnProperty('minLength')) {
-                if (!input.value.length >= conditions.minLength)
+                if (!input.value.length >= conditions.minLength) {
                     valid += 1;
+                    error = "minLength";
+                }
             }
             // Validate maxLength
             if (conditions.hasOwnProperty('maxLength')) {
-                if (!input.value.length <= conditions.maxLength)
+                if (!input.value.length <= conditions.maxLength) {
                     valid += 1;
+                    error = "maxLength";
+                }
             }
             // Validate lowercase letters    
             if (conditions.lowerCaseLetters == true) {
-                if (!input.value.match(Regex.lowerCaseLetters))
+                if (!input.value.match(Regex.lowerCaseLetters)) {
                     valid += 1;
+                    error = "lowerCaseLetters";
+                }
             }
             // Validate capital letters
             if (conditions.upperCaseLetters == true) {
-                if (!input.value.match(Regex.upperCaseLetters))
+                if (!input.value.match(Regex.upperCaseLetters)) {
                     valid += 1;
+                    error = "upperCaseLetters";
+                }
             }
         }
-        return valid != 0 ? false : true;
+        isValid = valid != 0 ? false : true;
+        return "{'isValid': " + isValid + "'error':" + error + "}";
     }
 }
 

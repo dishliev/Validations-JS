@@ -12,7 +12,7 @@
                 "lowerCaseLetters": true,
                 "upperCaseLetters": true
             }
-            if (Validate.Password(document.getElementById('passwordField'), conditions))
+            if (Validate.Password(document.getElementById('passwordField'), conditions).isValid)
                 alert('Y');
             else
                 alert('N');
