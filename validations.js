@@ -33,6 +33,17 @@ var Validate = {
     ContainNumber: function (val) {
         return Regex.ContainNumber(val);
     },
+    isEmptyVal: function (val) {
+        if (val === undefined) {
+            return true;
+        }
+        if (val === null) {
+            return true;
+        }
+        if (val === "") {
+            return true;
+        }
+    },
     Date: function (date) {
         return Regex.Date.test(date);
     },
